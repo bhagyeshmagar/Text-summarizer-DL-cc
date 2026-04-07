@@ -15,7 +15,7 @@ export default function HistoryPanel({ isOpen, onClose, onLoadEntry }) {
   const fetchHistory = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('http://localhost:8000/history');
+      const res = await axios.get('/history');
       setHistory(res.data);
     } catch (err) {
       console.error('Failed to fetch history', err);
@@ -27,7 +27,7 @@ export default function HistoryPanel({ isOpen, onClose, onLoadEntry }) {
   const deleteEntry = async (id, e) => {
     e.stopPropagation();
     try {
-      await axios.delete(`http://localhost:8000/history/${id}`);
+      await axios.delete(`/history/${id}`);
       setHistory(prev => prev.filter(h => h.id !== id));
     } catch (err) {
       console.error('Failed to delete entry', err);
@@ -36,7 +36,7 @@ export default function HistoryPanel({ isOpen, onClose, onLoadEntry }) {
 
   const clearAll = async () => {
     try {
-      await axios.delete('http://localhost:8000/history');
+      await axios.delete('/history');
       setHistory([]);
     } catch (err) {
       console.error('Failed to clear history', err);

@@ -34,7 +34,7 @@ function App() {
     setSummary('');
     setMeta(null);
     try {
-      const response = await axios.post('http://localhost:8000/summarize', {
+      const response = await axios.post('/summarize', {
         text,
         model_selection: model,
         no_of_sentence_on_output: numSentences,

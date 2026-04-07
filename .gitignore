@@ -45,3 +45,7 @@ history.json
 
 # MacOS
 .DS_Store
+
+dl-and-cc-mini-project.pem
+dl-and-cc-mini-project.pem:Zone.Identifier
+*.pem
