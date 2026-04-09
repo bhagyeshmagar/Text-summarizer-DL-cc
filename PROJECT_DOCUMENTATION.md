@@ -13,16 +13,16 @@ graph TD
     Start([User Input]) --> UI[React Frontend: InputCard]
     UI --> Validate{Text Valid?}
     
-    Validate -- No --> Notify[Show Warning: "Empty Text"]
+    Validate -- No --> Notify[Show Warning: Empty Text]
     Validate -- Yes --> API_Call[Axios POST /summarize]
     
     subgraph Backend: FastAPI
         API_Call --> PreProcess[text_cleaner.py: Preprocessing]
         PreProcess --> Model_Switch{Select Strategy}
         
-        Model_Switch -- "Custom Algorithm" --> TFIDF[python_algo.py: TF-IDF + Position Bias]
-        Model_Switch -- "Library Models" --> Sumy[sumy_lib_based.py: LexRank/LSA/TextRank]
-        Model_Switch -- "Deep Learning" --> BART[transformers_based.py: BART LLM]
+        Model_Switch -- Custom Algorithm --> TFIDF[python_algo.py: TF-IDF + Position Bias]
+        Model_Switch -- Library Models --> Sumy[sumy_lib_based.py: LexRank/LSA/TextRank]
+        Model_Switch -- Deep Learning --> BART[transformers_based.py: BART LLM]
         
         TFIDF --> Aggregator[Metadata Calculator]
         Sumy --> Aggregator
